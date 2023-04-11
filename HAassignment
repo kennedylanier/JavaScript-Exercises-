@@ -1,0 +1,61 @@
+class Job {
+  constructor(name, industry, requiresDegree, field, salary, location) {
+    this.name = name;
+    this.industry = industry;
+    this.requiresDegree = requiresDegree;
+    this.field = field;
+    this.salary = salary;
+    this.location = location;
+  }
+
+  getName() {
+    return this.name;
+  }
+
+  getFieldAndIndustry() {
+    return `${this.field} in the ${this.industry} industry`;
+  }
+  
+  setLocation(location) {
+    this.location = location;
+  }
+
+  setSalary(salary) {
+    this.salary = salary;
+  }
+}
+
+class RemoteJob extends Job {
+  constructor(name, industry, requiresDegree, field, salary, location, isFullyRemote, timezone) {
+    super(name, industry, requiresDegree, field, salary, location);
+    this.isFullyRemote = isFullyRemote;
+    this.timezone = timezone;
+  }
+
+  getIsFullyRemote() {
+    return this.isFullyRemote ? "fully remote" : "partially remote";
+  }
+
+  getTimezone() {
+    return this.timezone;
+  }
+}
+
+const job1 = new Job("Esthetician", "Beauty", false, "Esthetics", 45000, "Novi");
+const job2 = new Job("Yoga Teacher", "Fitness", false, "Group Exercise Instruction", 42000, "Ojai");
+const job3 = new Job("Cybersecurity Analyst", "Technology", false, "Cybersecurity", 94000, "Columbus");
+
+console.log(job1.getName());
+console.log(job1.getFieldAndIndustry());
+
+console.log(job2.getLocation());
+console.log(job2.setSalary(50000));
+
+console.log(job3.getRequiresDegree());
+console.log(job3.getFieldAndIndustry());
+
+
+const remoteJob1 = new RemoteJob("Software Engineer", "Technology", true, "Programming", 120000, "San Francisco", true, "PST");
+
+console.log(remoteJob1.getIsFullyRemote());
+console.log(remoteJob1.getTimezone());
