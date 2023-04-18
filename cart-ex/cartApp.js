@@ -1,50 +1,47 @@
-// Get references to DOM elements
-const addItemForm = document.querySelector('#addItemForm');
-const displayCartButton = document.querySelector('#displayCartButton');
+// cartApp.js
 
-// Initialize cart
+// Initialize cart if it does not exist in localStorage
 function initializeCart() {
-  let cart = JSON.parse(localStorage.getItem('cart'));
-  if (!cart) {
-    cart = [];
+  if (!localStorage.getItem('cart')) {
+    const cart = [];
     localStorage.setItem('cart', JSON.stringify(cart));
   }
 }
 
-// Add item to cart
+// Add an item to the cart
 function addItem(item) {
-  let cart = JSON.parse(localStorage.getItem('cart'));
+  const cart = JSON.parse(localStorage.getItem('cart'));
   cart.push(item);
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// Remove item from cart
+// Remove an item from the cart by id
 function removeItem(id) {
-  let cart = JSON.parse(localStorage.getItem('cart'));
-  cart = cart.filter(item => item.id !== id);
-  localStorage.setItem('cart', JSON.stringify(cart));
+  const cart = JSON.parse(localStorage.getItem('cart'));
+  const updatedCart = cart.filter(item => item.id !== id);
+  localStorage.setItem('cart', JSON.stringify(updatedCart));
 }
 
-// Display cart contents
+// Display the cart contents
 function displayCart() {
-  let cart = JSON.parse(localStorage.getItem('cart'));
+  const cart = JSON.parse(localStorage.getItem('cart'));
   console.log(cart);
 }
 
-// Event listeners
-addItemForm.addEventListener('submit', function(event) {
-  event.preventDefault();
-  const itemName = addItemForm.elements.itemName.value;
-  const itemPrice = addItemForm.elements.itemPrice.value;
-  const item = {
-    id: Date.now(),
-    name: itemName,
-    price: Number(itemPrice)
-  };
+// Add an event listener to the form to add an item to the cart
+const addItemForm = document.getElementById('addItemForm');
+addItemForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const itemName = document.getElementById('itemName').value;
+  const itemPrice = parseFloat(document.getElementById('itemPrice').value);
+  const item = { id: Date.now(), name: itemName, price: itemPrice };
   addItem(item);
   addItemForm.reset();
 });
 
-displayCartButton.addEventListener('click', function() {
-  displayCart();
-});
+// Add an event listener to the button to display the cart contents
+const displayCartButton = document.getElementById('displayCartButton');
+displayCartButton.addEventListener('click', displayCart);
+
+// Initialize the cart
+initializeCart();
