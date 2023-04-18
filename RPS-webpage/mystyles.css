@@ -1,31 +1,77 @@
-h1 {
-    text-align: center;
-  }
+/* Set a background color and adjust font sizes */
+body {
+  background-color: #F8F8F8;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
 
-  .container {
-    display: flex;
-    justify-content: center; /* centers the container horizontally */
-    align-items: center; /* centers the container vertically */
-  }
-  
-  .players, .scores {
-    margin: 0 20px; /* adds some space between the child elements */
-  }
-  
-  ul {
-    list-style: none; /* removes bullets from the list items */
-    padding: 0;
-    margin: 0;
-  }
-  
-  li {
-    font-size: 24px;
-    margin-bottom: 10px; /* adds some space between the list items */
-  }
-  
-  .results {
-    display: flex;
-    justify-content: center; /* centers the container horizontally */
-    align-items: center; /* centers the container vertically */
-    margin-top: 2rem;
-  }
+/* Style the header */
+h1 {
+  text-align: center;
+  font-size: 36px;
+  color: #333333;
+  margin-top: 40px;
+}
+
+/* Create a grid for the players and scores */
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+/* Style the players and scores sections */
+.players, .scores {
+  background-color: #FFFFFF;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.players h2, .scores h2 {
+  margin-top: 0;
+  font-size: 24px;
+  color: #333333;
+}
+
+.players ul, .scores ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.players li, .scores li {
+  margin: 10px 0;
+  font-size: 20px;
+  color: #666666;
+}
+
+/* Style the results section */
+.results {
+  background-color: #FFFFFF;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+.results h2 {
+  margin-top: 0;
+  font-size: 24px;
+  color: #333333;
+}
+
+.results li {
+  font-size: 20px;
+  color: #666666;
+}
+
+/* Style the tournament winner label */
+#tournamentWinner {
+  font-weight: bold;
+  color: #FF0000;
+  font-size: 24px;
+}
